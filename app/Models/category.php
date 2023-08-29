@@ -21,8 +21,10 @@ class category extends Model
         });
     }
 
+
     public function products()
     {
-        return $this->hasMany(Product::class); // satu category bisa memiliki banyak product
+        return $this->belongsToMany(Product::class); //
     }
+
 }

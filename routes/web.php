@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\CreateCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,10 @@ Route::get('/category/{category:slug}', [\App\Http\Controllers\CategoryControlle
 
 //contact us
 Route::get('/contact', [\App\Http\Controllers\Controller::class, 'contactUs'])->name('contact.index');
+
+
+
+//admin
+Route::resource('admin/dashboard', \App\Http\Controllers\AdminDashboardController::class);
+Route::resource('admin/categories', \App\Http\Controllers\AdminCategoryController::class)->name('index', 'admin.categories.index');
+Route::resource('admin/products', \App\Http\Controllers\AdminProductController::class)->name('index', 'admin.products.index');

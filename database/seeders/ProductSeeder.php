@@ -29,7 +29,7 @@ class ProductSeeder extends Seeder
         //make seeder for product table here 
         $products = [
             [
-                'category_id' => 3,
+               
                 'nama_produk' => 'Flow Meter',
                 'slug' => 'flow-meter',
                 'kategory' => 'Alat Pengukuran',
@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Flow Meter',
             ],
             [
-                'category_id' => 4,
+               
                 'nama_produk' => 'Gerindra',
                 'slug' => 'gerindra',
                 'kategory' => 'Alat Pemoles',
@@ -49,7 +49,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Gerindra',
             ],
             [
-                'category_id' => 3,
+               
                 'nama_produk' => 'Beko',
                 'slug' => 'beko',
                 'kategory' => 'Alat Angkut',
@@ -59,7 +59,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Beko',
             ],
             [
-                'category_id' => 2,
+              
                 'nama_produk' => 'Lathe Machine',
                 'slug' => 'lathe-machine',
                 'kategory' => 'Mesin Bubut',
@@ -69,7 +69,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Lathe Machine',
             ],
             [
-                'category_id' => 1,
+               
                 'nama_produk' => 'Hydraulic Press',
                 'slug' => 'hydraulic-press',
                 'kategory' => 'Mesin Press Hidrolik',
@@ -79,7 +79,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Hydraulic Press',
             ],
             [
-                'category_id' => 2,
+               
                 'nama_produk' => 'Air Compressor',
                 'slug' => 'air-compressor',
                 'kategory' => 'Kompressor Udara',
@@ -89,7 +89,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Air Compressor',
             ],
             [
-                'category_id' => 1,
+                
                 'nama_produk' => 'Drilling Machine',
                 'slug' => 'drilling-machine',
                 'kategory' => 'Mesin Bor',
@@ -99,7 +99,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Drilling Machine',
             ],
             [
-                'category_id' => 3,
+                
                 'nama_produk' => 'Forklift',
                 'slug' => 'forklift',
                 'kategory' => 'Alat Angkut',
@@ -109,7 +109,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Forklift',
             ],
             [
-                'category_id' => 4,
+               
                 'nama_produk' => 'Bench Grinder',
                 'slug' => 'bench-grinder',
                 'kategory' => 'Alat Pemoles',
@@ -119,7 +119,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Bench Grinder',
             ],
             [
-                'category_id' => 3,
+               
                 'nama_produk' => 'Excavator',
                 'slug' => 'excavator',
                 'kategory' => 'Alat Angkut',
@@ -129,7 +129,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Excavator',
             ],
             [
-                'category_id' => 2,
+               
                 'nama_produk' => 'Milling Machine',
                 'slug' => 'milling-machine',
                 'kategory' => 'Mesin Bubut',
@@ -139,7 +139,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Milling Machine',
             ],
             [
-                'category_id' => 1,
+                
                 'nama_produk' => 'Punching Machine',
                 'slug' => 'punching-machine',
                 'kategory' => 'Mesin Press Hidrolik',
@@ -149,7 +149,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Punching Machine',
             ],
             [
-                'category_id' => 2,
+                
                 'nama_produk' => 'Welding Machine',
                 'slug' => 'welding-machine',
                 'kategory' => 'Mesin Las',
@@ -159,7 +159,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Welding Machine',
             ],
             [
-                'category_id' => 1,
+               
                 'nama_produk' => 'Shearing Machine',
                 'slug' => 'shearing-machine',
                 'kategory' => 'Mesin Potong',
@@ -169,7 +169,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Shearing Machine',
             ],
             [
-                'category_id' => 3,
+                
                 'nama_produk' => 'Truck',
                 'slug' => 'truck',
                 'kategory' => 'Alat Angkut',
@@ -179,7 +179,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Truck',
             ],
             [
-                'category_id' => 4,
+               
                 'nama_produk' => 'Bench Vise',
                 'slug' => 'bench-vise',
                 'kategory' => 'Alat Pemoles',
@@ -189,7 +189,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Bench Vise',
             ],
             [
-                'category_id' => 5,
+               
                 'nama_produk' => 'Wheel Loader',
                 'slug' => 'wheel-loader',
                 'kategory' => 'Alat Angkut',
@@ -199,7 +199,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Wheel Loader',
             ],
             [
-                'category_id' => 6,
+               
                 'nama_produk' => 'CNC Machine',
                 'slug' => 'cnc-machine',
                 'kategory' => 'Mesin Bubut',
@@ -209,7 +209,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian CNC Machine',
             ],
             [
-                'category_id' => 7,
+               
                 'nama_produk' => 'Hydraulic Press',
                 'slug' => 'hydraulic-press',
                 'kategory' => 'Mesin Press Hidrolik',
@@ -219,7 +219,7 @@ class ProductSeeder extends Seeder
                 'varian' => 'Varian Hydraulic Press',
             ],
             [
-                'category_id' => 8,
+               
                 'nama_produk' => 'Air Compressor',
                 'slug' => 'air-compressor',
                 'kategory' => 'Kompressor Udara',

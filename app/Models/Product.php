@@ -15,18 +15,23 @@ class Product extends Model
     protected static function booted()
     {
         static::creating(function ($product) {
-            $product->slug = strtolower(str_replace(' ', '-', $product->name));
+            $product->slug = strtolower(str_replace(' ', '-', $product->nama_produk));
 
         });
     }
 
 
-    //relations satu product punya satu category
-    public function category()
-{
-    return $this->belongsTo(Category::class, 'category_id');
-}
+ 
 
+    //relation
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_product');
+    }
     
-    
+
+
+
+
+
 }

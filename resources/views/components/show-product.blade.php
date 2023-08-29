@@ -28,11 +28,11 @@
 
                 <tbody class="bg-white divide-y divide-gray-200">
 
-                    @foreach ($categories as $categori)
+                    @foreach ($categories as $category)
                         <tr class="">
                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">
-                                <a href="/category/{{ $categori->slug }}">
-                                    <p class="text-base text-gray-500">{{ $categori->name }}</p>
+                                <a href="/category/{{ $category->slug }}">
+                                    <p class="text-base text-gray-500">{{ $category->name }}</p>
                                 </a>
                             </td>
                         </tr>
@@ -62,7 +62,10 @@
                                 </a>
                             </h3>
                             <div class="">
-                                <p class="mt-1 text-sm text-gray-500 ">{{ $isproduct->category->name }}</p>
+                                @foreach ($isproduct->categories as $category)
+                                    <p class="mt-1 text-sm text-gray-500">{{ $category->name }}</p>
+                                @endforeach
+
                             </div>
                         </div>
                         <div class="mt-6">

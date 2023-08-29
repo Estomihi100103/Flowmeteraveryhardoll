@@ -38,7 +38,10 @@
                                     </a>
                                 </h3>
                                 <div class="">
-                                    <p class="mt-1 text-sm text-gray-500 ">{{ $product->category->name }}</p>
+
+                                    @foreach ($product->categories as $category)
+                                        <p class="mt-1 text-sm text-gray-500 ">{{ $category->name }}</p>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="mt-6">
@@ -54,7 +57,4 @@
         </div>
 
     </div>
-
-
-    
 @endsection

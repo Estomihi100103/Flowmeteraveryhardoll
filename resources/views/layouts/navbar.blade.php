@@ -121,11 +121,10 @@
                                 <div class="hidden lg:flex lg:flex-1 lg:items-center">
                                     <a href="/">
                                         <span class="sr-only">Your Company</span>
-                                        <img class="h-8 w-auto"
-                                            src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="">
+                                        <img class="h-12 w-auto"
+                                            src="img/Logo.png" alt="">
                                     </a>
-                                    <a class="text-white px-4 uppercase font-bold"
-                                        href="/">Flowmeteraveryhardoll</a>
+                                   
 
                                 </div>
 

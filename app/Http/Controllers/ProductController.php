@@ -15,10 +15,8 @@ class ProductController extends Controller
     public function index()
     {
         //return product berdasarkan yang terbaru
-        $products = Product::latest()->with('category')->get();
-        return view('product.products', [
-            'products' => $products
-        ]);
+        $products = Product::with('categories')->latest()->get();
+        return view('product.products', compact('products'));
     }
 
 
@@ -41,22 +39,31 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
+
     public function show(Product $product)
     {
-        //ambil seluruh data category dari database
-        $category = Category::all();
+        // Ambil seluruh data category dari database
+        $categories = Category::all();
 
-        //ambil product yang memiliki category yang sama dengan product yang sedang ditampilkan
-        $isproduct = Product::where('category_id', $product->category_id)->get();
+        // Ambil semua kategori dari produk yang sedang ditampilkan
+        $productCategories = $product->categories;
+
+        // Dapatkan ID dari semua kategori tersebut
+        $categoryIds = $productCategories->pluck('id');
+
+        // Ambil semua produk yang memiliki kategori yang sama dengan produk saat ini
+        $isproducts = Product::whereHas('categories', function ($query) use ($categoryIds) {
+            $query->whereIn('category_id', $categoryIds);
+        })->get();
 
         return view('product.show', [
             'product' => $product,
-            'categories' => $category,
-            'isproducts' => $isproduct
+            'categories' => $categories,
+            'isproducts' => $isproducts
         ]);
-
-        //categories yang  di terima di view
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

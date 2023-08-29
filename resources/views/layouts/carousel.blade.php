@@ -8,7 +8,7 @@
                 <p class="mt-4 text-xl text-white">Pusat Penjualan Alat Flow Meter,Alat Alat Industri dan
                     Peralatan Keamanan serta Peralatan Profesional
                 </p>
-                <a href="#"
+                <a href="/contact"
                     class="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base text-center font-medium text-gray-900 hover:bg-gray-100">Contact
                     Us</a>
             </div>
@@ -17,7 +17,7 @@
 
 
         <div class="slide h-[50vh] sm:h-[75vh] md:h-160">
-            <img class="w-full h-full object-cover" src="https://source.unsplash.com/featured/?'Industrial meter'">
+            <img class="w-full h-full object-cover" src="https://source.unsplash.com/featured/?'Industrial, meter'">
             <div
                 class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 px-5 py-3 text-center text-white">
                 <h1 class="text-4xl font-bold tracking-tight text-white lg:text-6xl">Oil Flow Meter</h1>
@@ -34,7 +34,7 @@
 
         <div class="slide h-[50vh] sm:h-[75vh] md:h-160">
             <img class="w-full h-full object-cover"
-                src="https://www.kindacode.com/wp-content/uploads/2022/07/flower-3.jpeg">
+                src="https://source.unsplash.com/featured/?'oils'">
             <div
                 class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 px-5 py-3 text-center text-white">
                 <h1 class="text-4xl font-bold tracking-tight text-white lg:text-6xl">Water Meter PDAM</h1>

@@ -2,7 +2,7 @@
 
       @section('content')
           @include('layouts.carousel')
-        
+
 
 
           <!-- Category section -->
@@ -25,12 +25,14 @@
                                   <a href="/category/{{ $category->slug }}"
                                       class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
                                       <span aria-hidden="true" class="absolute inset-0">
-                                          <img src="https://source.unsplash.com/400x800?{{ $category->name }},'meter'" class="card-img"
-                                              alt="" class="h-full w-full object-cover object-center">
+                                          <img src="https://source.unsplash.com/400x800?{{ $category->name }},'meter'"
+                                              class="card-img" alt=""
+                                              class="h-full w-full object-cover object-center">
                                       </span>
                                       <span aria-hidden="true"
                                           class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
-                                      <span class="relative mt-auto text-center text-xl font-bold text-white">{{ $category->name }}</span>
+                                      <span
+                                          class="relative mt-auto text-center text-xl font-bold text-white">{{ $category->name }}</span>
                                   </a>
                               @endforeach
                           </div>
@@ -80,17 +82,17 @@
                   the essence of efficiency and accuracy in instruments like flow meters and other industrial tools</p>
 
               <div class="mt-10 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
-                @foreach ($products as $product)
-                  <a href="#" class="group block">
-                      <div aria-hidden="true"
-                          class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg lg:aspect-h-6 lg:aspect-w-5 group-hover:opacity-75">
-                          <img src="https://source.unsplash.com/400x400?{{ $product->nama_produk }},'Bulldozer',tractor'"
-                              alt="Brown leather key ring with brass metal loops and rivets on wood table."
-                              class="h-full w-full object-cover object-center">
-                      </div>
-                      <h3 class="mt-4 text-base font-semibold text-gray-900">{{ $product->nama_produk }}</h3>
-                      <p class="mt-2 text-sm text-gray-500">{{ $product->deskripsi }}</p>
-                  </a>
+                  @foreach ($products as $product)
+                      <a href="#" class="group block">
+                          <div aria-hidden="true"
+                              class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg lg:aspect-h-6 lg:aspect-w-5 group-hover:opacity-75">
+                              <img src="https://source.unsplash.com/400x400?{{ $product->nama_produk }},'Bulldozer',tractor'"
+                                  alt="Brown leather key ring with brass metal loops and rivets on wood table."
+                                  class="h-full w-full object-cover object-center">
+                          </div>
+                          <h3 class="mt-4 text-base font-semibold text-gray-900">{{ $product->nama_produk }}</h3>
+                          <p class="mt-2 text-sm text-gray-500">{!! $product->deskripsi !!}</p>
+                      </a>
                   @endforeach
 
                   {{-- <a href="#" class="group block">
