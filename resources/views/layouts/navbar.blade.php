@@ -7,8 +7,13 @@
     <script src="/js/components.js"></script>
     <script type="module" src="/js/iframe-alpine-964dceff.js"></script>
     @vite('resources/css/app.css')
-</head>
+    <style>
+        [x-cloak] {
+            display: none;
+        }
+    </style>
 
+</head>
 
 <body>
     <div class="" style="">
@@ -28,7 +33,6 @@
 
 
                 <div class="fixed inset-0 z-40 flex">
-
                     <div x-show="open" x-transition:enter="transition ease-in-out duration-300 transform"
                         x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
                         x-transition:leave="transition ease-in-out duration-300 transform"
@@ -61,19 +65,10 @@
 
                         </div>
 
-                        <div class="space-y-6 border-t border-gray-200 px-4 py-6">
-                            <div class="flow-root">
-                                <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Create an
-                                    account</a>
-                            </div>
-                            <div class="flow-root">
-                                <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Sign in</a>
-                            </div>
-                        </div>
+                    
 
                         <div class="space-y-6 border-t border-gray-200 px-4 py-6">
                             <!-- Currency selector -->
-
                         </div>
                     </div>
 
@@ -120,11 +115,10 @@
                                 <!-- Logo (lg+) -->
                                 <div class="hidden lg:flex lg:flex-1 lg:items-center">
                                     <a href="/">
-                                        <span class="sr-only">Your Company</span>
-                                        <img class="h-12 w-auto"
-                                            src="img/Logo.png" alt="">
+                                        <span class="sr-only">Nusantara Berkat Teknik</span>
+                                        <img class="h-12 w-auto" src="img/Logo.png" alt="">
                                     </a>
-                                   
+
 
                                 </div>
 
@@ -154,59 +148,50 @@
                                                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
                                         </svg>
                                     </button>
-
-                                    <!-- Search -->
-                                    <a href="#" class="ml-2 p-2 text-white">
-                                        <span class="sr-only">Search</span>
-                                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                            stroke="currentColor" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z">
-                                            </path>
-                                        </svg>
-                                    </a>
                                 </div>
 
                                 <!-- Logo (lg-) -->
-                                <a href="#" class="lg:hidden">
+                                <a href="/" class="lg:hidden">
                                     <span class="sr-only">Your Company</span>
-                                    <img src="https://tailwindui.com/img/logos/mark.svg?color=white" alt=""
+                                    <img src="img/Logo.png" alt=""
                                         class="h-8 w-auto">
                                 </a>
 
                                 <div class="flex flex-1 items-center justify-end">
-                                    <a href="#"
-                                        class="hidden text-sm font-medium text-white lg:block">Search</a>
 
-                                    <div class="flex items-center lg:ml-8">
-                                        <!-- Help -->
-                                        <a href="#" class="p-2 text-white lg:hidden">
-                                            <span class="sr-only">Help</span>
-                                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z">
-                                                </path>
-                                            </svg>
-                                        </a>
-                                        <a href="#"
-                                            class="hidden text-sm font-medium text-white lg:block">Help</a>
+                                    <div class="relative" x-data="{ open: false }">
+                                        <!-- Search Icon -->
+                                        <button @click="open = true"
+                                            class="p-2 rounded-md bg-none hover:bg-none focus:outline-none focus:bg-none text-white">
+                                            Search
+                                        </button>
 
-                                        <!-- Cart -->
-                                        <div class="ml-4 flow-root lg:ml-8">
-                                            <a href="#" class="group -m-2 flex items-center p-2">
-                                                <svg class="h-6 w-6 flex-shrink-0 text-white" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                    aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z">
-                                                    </path>
-                                                </svg>
-                                                <span class="ml-2 text-sm font-medium text-white">0</span>
-                                                <span class="sr-only">items in cart, view bag</span>
-                                            </a>
+                                        <!-- Modal -->
+                                        <div x-show="open" @click="open = false"
+                                            class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-none mt-7"
+                                            x-cloak>
+                                            <div @click.stop class="bg-white rounded-lg w-1/2 p-8 relative">
+                                                <!-- Close Button -->
+                                                <button @click="open = false"
+                                                    class="absolute top-4 right-4 p-2 focus:outline-none hover:bg-gray-100 rounded">
+                                                    <svg class="h-6 w-6" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path strokeLinecap="round" strokeLinejoin="round"
+                                                            strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Search Input -->
+                                                <div class="flex items-center border-b-2 border-gray-200">
+                                                    <form action="{{ route('products.search') }}" method="GET">
+                                                        <input type="text" name="query"
+                                                            placeholder="Search products..."
+                                                            class="w-full py-2 focus:outline-none focus:border-indigo-400">
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div>  
                                 </div>
                             </div>
                         </div>
@@ -277,13 +262,7 @@
                 dots[slideIndex - 1].classList.remove('bg-green-600');
                 dots[slideIndex - 1].classList.add('bg-yellow-500');
             }
-
-
-           
         </script>
-
-
-
 
 </body>
 

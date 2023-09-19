@@ -74,7 +74,6 @@
 
 
             <x-show-product :isproducts="$isproducts" :category="$categories" />
-
             {{-- categories  yang di terima dari controller --}}
 
         </div>

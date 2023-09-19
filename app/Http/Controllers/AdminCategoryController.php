@@ -14,6 +14,7 @@ class AdminCategoryController extends Controller
     {
         //ambil seluruh data category dari database berdasarkan yang terbaru
         $categories = category::latest()->get();
+
         return view('admin.categories.index')->with('categories', $categories);
     }
 
@@ -35,13 +36,20 @@ class AdminCategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|unique:categories,name',
-            'description' => 'nullable|string'
+            'description' => 'nullable|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Batasi jenis dan ukuran gambar
         ]);
 
         $category = new Category;
         $category->name = $request->name;
         $category->description = $request->description;
-        // Anda mungkin juga ingin mengatur 'slug' dan 'image' di sini
+
+        if ($request->file('image')) {
+            $imagePath = $request->file('image')->store('public/categories-img'); // Simpan gambar ke direktori "public/categories-img"
+            $category->image = str_replace('public/', '', $imagePath); // Simpan path tanpa awalan 'public/'
+        }
+        $category->save();
+
         $category->save();
 
         return redirect()->route('admin.categories.index')->with('success', 'Kategori berhasil ditambahkan');

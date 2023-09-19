@@ -2,24 +2,20 @@
 
 @section('content')
     @include('layouts.carousel')
-    <div class="" style="" id="livescroll">
-
-        <div class="bg-white">
-            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <div class="max-w-7xl mx-auto px-4 sm:px-4 lg:px-6">
-                    <div class="text-center">
-                        <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">New Arrivals</h2>
-                        <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
-                            Produk baru</p>
-                        <p class="max-w-xl mt-5 mx-auto text-xl text-gray-500">Lihat produk terbaru menarik dari koleksi
-                            eksklusif kami</p>
-                    </div>
-                </div>
-
-                <div class="px-4 py-8 sm:px-4 sm:py-12 lg:max-w-7xl lg:px-4">
-                    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Produk Pilihan</h2>
-                </div>
-
+    <div id="livescroll">
+        <div class="max-w-7xl mx-auto px-4 sm:px-4 lg:px-6">
+            <div class="text-center">
+                <p class="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+                    Produk Terkait</p>
+                <p class="max-w-xl mt-5 mx-auto text-xl text-gray-500">Lihat produk terbaru menarik dari koleksi
+                    eksklusif kami</p>
+            </div>
+        </div>
+        
+        <div class="container mx-auto mt-20 mb-20 px-4">
+            @if ($products->isEmpty())
+                <p>No products found for your search.</p>
+            @else
                 <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     @foreach ($products as $product)
                         <div class="group relative">
@@ -50,8 +46,10 @@
                             </div>
                         </div>
                     @endforeach
+
                 </div>
-            </div>
+            @endif
         </div>
     </div>
+
 @endsection

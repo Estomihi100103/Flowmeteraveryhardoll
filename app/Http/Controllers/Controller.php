@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
@@ -30,6 +32,18 @@ class Controller extends BaseController
     public function contactUs()
     {
         return view('contactUs.index');
+    }
+
+
+    //seacrh product
+    public function searchProduct(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('nama_produk', 'LIKE', "%$query%")
+            ->orWhere('deskripsi', 'LIKE', "%$query%")
+            ->get();
+
+        return view('product.results-search', compact('products'));
     }
 
 }

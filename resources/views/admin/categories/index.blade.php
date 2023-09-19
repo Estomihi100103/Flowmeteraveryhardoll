@@ -20,9 +20,11 @@
                                 </button>
 
                                 <!-- Modal -->
-                                <div x-show="open" class="fixed inset-0 flex items-start justify-center z-50 overflow-y-auto  mt-12 pt-12">
+                                <div x-show="open"
+                                    class="fixed inset-0 flex items-start justify-center z-50 overflow-y-auto  mt-12 pt-12">
 
-                                    <div class="bg-white p-5 rounded shadow-lg border max-h-[80vh] overflow-y-auto max-w-3xl">
+                                    <div
+                                        class="bg-white p-5 rounded shadow-lg border max-h-[80vh] overflow-y-auto max-w-3xl">
 
                                         <div class="mt-3 text-center sm:mt-5">
                                             <h3 class="text-lg font-semibold leading-6 text-gray-900" id="modal-title">
@@ -35,20 +37,38 @@
                                             <label for="name"
                                                 class="block text-sm font-medium leading-6 text-gray-900">Nama
                                                 Kategori</label>
-                                            <div class="relative mt-2 rounded-md shadow-sm">
+                                            <div class="relative mt-2 mb-4 rounded-md shadow-sm">
                                                 <div
                                                     class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                                 </div>
                                                 <input type="text" name="name" id="name"
-                                                    class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                    class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('name') border-red-500 @enderror"
                                                     placeholder="Nama Kategori">
+                                                <!-- Error message -->
+                                                @error('name')
+                                                    <div class="mt-1 text-red-500 text-sm">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
+
 
                                             <div class="relative mt-2 rounded-md shadow-sm">
                                                 <label for="description"
                                                     class="block text-sm font-medium leading-6 text-gray-900">Deskripsi</label>
                                                 <input id="x" type="hidden" name="description">
                                                 <trix-editor class="trix-editor" input="x"></trix-editor>
+                                            </div>
+
+
+
+                                            <div class="mb-3">
+                                                <label for="image" class="block text-sm font-medium text-gray-700">Chose
+                                                    image</label>
+                                                <img class="max-w-full mb-3 w-1/2 hidden" alt="Preview" src=""
+                                                    id="imgPreview">
+                                                <input type="file" id="image" name="image" class="mt-1"
+                                                    onchange="previewImage()">
                                             </div>
 
                                             <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
@@ -168,5 +188,28 @@
             margin-left: 0.3em;
             padding-left: 0.6em;
         }
+
+        #image-preview {
+            width: 16rem;
+            height: 16rem;
+            object-fit: cover;
+        }
     </style>
+
+
+    <script>
+        // preview image untuk menampilkan gambar yang akan di upload
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('#imgPreview');
+
+            imgPreview.style.display = 'block'; // agar gambar bisa muncul ketika di upload 
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 @endsection

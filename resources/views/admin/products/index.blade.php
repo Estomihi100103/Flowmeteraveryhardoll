@@ -115,10 +115,13 @@
                                     <th scope="col"
                                         class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
                                         Kategory </th>
+                                    <th
+                                        class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                        <p class="text-indigo-600 hover:text-indigo-900 mx-12">Action</p>
 
-                                    <th scope="col" class="relative py-3.5 pl-3">
-                                        <span class="sr-only">Edit</span>
                                     </th>
+
+
                                 </tr>
 
                             </thead>
@@ -141,6 +144,16 @@
                                             @endforeach
 
                                         </td>
+                                        <td
+                                            class="relative whitespace-nowrap py-4   pr-4 text-right text-sm font-medium sm:pr-6">
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900 px-2">Lihat<span
+                                                    class="sr-only">, Lindsay Walton</span></a>
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900 px-2">Edit<span
+                                                    class="sr-only">, Lindsay Walton</span></a>
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900 px-2">Hapus<span
+                                                    class="sr-only">, Lindsay Walton</span></a>
+                                        </td>
+
 
                                     </tr>
                                 @endforeach

@@ -6,6 +6,9 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductController extends Controller
 {
@@ -64,6 +67,15 @@ class ProductController extends Controller
     }
 
 
+    public function searchCategory(Request $request)
+    {
+        $query = $request->get('query');
+
+        $categories = Category::where('name', 'LIKE', "%{$query}%")->get();
+        return response()->json($categories);
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -88,4 +100,7 @@ class ProductController extends Controller
     {
         //
     }
+
+
+
 }
