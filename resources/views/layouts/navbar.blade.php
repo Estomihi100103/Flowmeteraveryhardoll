@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/components.css">
     <script src="/js/components.js"></script>
     <script type="module" src="/js/iframe-alpine-964dceff.js"></script>
+    @vite(['resources/js/app.js'])
     @vite('resources/css/app.css')
     <style>
         [x-cloak] {

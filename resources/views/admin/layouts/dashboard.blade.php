@@ -9,11 +9,12 @@
     <script type="module" src="/js/iframe-alpine-964dceff.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/trix/dist/trix.min.css">
     <script src="https://cdn.jsdelivr.net/npm/trix/dist/trix.min.js"></script>
+    
 
     <title>Document</title>
-    
-    @vite('resources/css/app.css')
-  
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body>

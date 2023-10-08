@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminCategoryController extends Controller
 {
@@ -50,7 +51,6 @@ class AdminCategoryController extends Controller
         }
         $category->save();
 
-        $category->save();
 
         return redirect()->route('admin.categories.index')->with('success', 'Kategori berhasil ditambahkan');
     }
@@ -67,18 +67,38 @@ class AdminCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.index', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, category $category)
+
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $data = $request->validate([
+            'name' => 'required|string|unique:categories,name,' . $id,
+            'description' => 'nullable|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Batasi jenis dan ukuran gambar
+        ]);
+
+        // Update gambar jika ada
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama jika ada
+            if ($category->image) {
+                Storage::delete('public/' . $category->image);
+            }
+            $path = $request->file('image')->store('public/categories-img');
+            $path = str_replace('public/', '', $path);
+            $data['image'] = $path;
+        }
+
+        $category->update($data);
+
+        return redirect()->back()->with('success', 'Kategori berhasil diperbarui!');
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -4,81 +4,96 @@
     <div class="" style="">
         <div class="bg-white py-10">
 
+            <x-success-alert />
+
             <div>
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">
                             <h1 class="text-base font-semibold leading-6 text-gray-900">Kategory</h1>
-
                         </div>
                         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                            <div x-data="{ open: false }"> <!-- Ini menggunakan Alpine.js untuk mengelola tampilan modal -->
-                                <!-- Tombol untuk menampilkan modal -->
-                                <button @click="open = true" type="button"
-                                    class=" rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto ">
-                                    Tambah Kategori
-                                </button>
 
-                                <!-- Modal -->
-                                <div x-show="open"
-                                    class="fixed inset-0 flex items-start justify-center z-50 overflow-y-auto  mt-12 pt-12">
+                            <!-- Modal toggle -->
+                            <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+                                class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                type="button">
+                                Tambah Kategori
+                            </button>
 
-                                    <div
-                                        class="bg-white p-5 rounded shadow-lg border max-h-[80vh] overflow-y-auto max-w-3xl">
-
-                                        <div class="mt-3 text-center sm:mt-5">
-                                            <h3 class="text-lg font-semibold leading-6 text-gray-900" id="modal-title">
-                                                Kategory</h3>
-
+                            <!-- Main modal -->
+                            <div id="defaultModal" tabindex="-1" aria-hidden="true"
+                                class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div class="relative w-full max-w-2xl max-h-full">
+                                    <!-- Modal content -->
+                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                        <!-- Modal header -->
+                                        <div
+                                            class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                Tambah Kategori
+                                            </h3>
+                                            <button type="button"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                data-modal-hide="defaultModal">
+                                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
                                         </div>
-
-                                        <form method="post" action="/admin/categories" enctype="multipart/form-data">
-                                            @csrf
-                                            <label for="name"
-                                                class="block text-sm font-medium leading-6 text-gray-900">Nama
-                                                Kategori</label>
-                                            <div class="relative mt-2 mb-4 rounded-md shadow-sm">
-                                                <div
-                                                    class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                                </div>
-                                                <input type="text" name="name" id="name"
-                                                    class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('name') border-red-500 @enderror"
-                                                    placeholder="Nama Kategori">
-                                                <!-- Error message -->
-                                                @error('name')
-                                                    <div class="mt-1 text-red-500 text-sm">
-                                                        {{ $message }}
+                                        <!-- Modal body -->
+                                        <div class="p-6 space-y-6">
+                                            <form method="post" action="/admin/categories" enctype="multipart/form-data">
+                                                @csrf
+                                                <label for="name"
+                                                    class="block text-sm font-medium leading-6 text-gray-900">Nama
+                                                    Kategori</label>
+                                                <div class="relative mt-2 mb-4 rounded-md shadow-sm">
+                                                    <div
+                                                        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                                     </div>
-                                                @enderror
-                                            </div>
+                                                    <input type="text" name="name" id="name"
+                                                        class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('name') border-red-500 @enderror"
+                                                        placeholder="Nama Kategori">
+                                                    <!-- Error message -->
+                                                    @error('name')
+                                                        <div class="mt-1 text-red-500 text-sm">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
 
 
-                                            <div class="relative mt-2 rounded-md shadow-sm">
-                                                <label for="description"
-                                                    class="block text-sm font-medium leading-6 text-gray-900">Deskripsi</label>
-                                                <input id="x" type="hidden" name="description">
-                                                <trix-editor class="trix-editor" input="x"></trix-editor>
-                                            </div>
+                                                <div class="relative mt-2 rounded-md shadow-sm">
+                                                    <label for="description"
+                                                        class="block text-sm font-medium leading-6 text-gray-900">Deskripsi</label>
+                                                    <input id="x" type="hidden" name="description">
+                                                    <trix-editor class="trix-editor" input="x"></trix-editor>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="image"
+                                                        class="block text-sm font-medium text-gray-700 mt-3">Chose
+                                                        image</label>
+                                                    <img class="max-w-full mb-3 w-1/2 hidden" alt="Preview" src=""
+                                                        id="imgPreview">
+                                                    <input type="file" id="image" name="image" class="mt-1"
+                                                        onchange="previewImage()">
+                                                </div>
 
-
-
-                                            <div class="mb-3">
-                                                <label for="image" class="block text-sm font-medium text-gray-700">Chose
-                                                    image</label>
-                                                <img class="max-w-full mb-3 w-1/2 hidden" alt="Preview" src=""
-                                                    id="imgPreview">
-                                                <input type="file" id="image" name="image" class="mt-1"
-                                                    onchange="previewImage()">
-                                            </div>
-
-                                            <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                                                <button type="submit"
-                                                    class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">Simpan</button>
-                                                <button type="button"
-                                                    class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                                                    @click="open = false">Cancel</button>
-                                            </div>
-                                        </form>
+                                                <!-- Modal footer -->
+                                                <div
+                                                    class="flex items-center mt-6 space-x-2  rounded-b dark:border-gray-600">
+                                                    <button data-modal-hide="defaultModal" type="submit"
+                                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan</button>
+                                                    <button data-modal-hide="defaultModal" type="button"
+                                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Batal</button>
+                                                </div>
+                                            </form>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -95,48 +110,152 @@
                                     <th scope="col"
                                         class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
                                         No
-
                                     </th>
                                     <th scope="col"
                                         class="relative isolate py-3.5 pr-3 text-left text-sm font-semibold text-gray-900">
                                         Nama</th>
-                                    <div class="absolute inset-y-0 right-full -z-10 w-screen border-b border-b-gray-200">
-                                    </div>
-                                    <div class="absolute inset-y-0 left-0 -z-10 w-screen border-b border-b-gray-200">
-                                    </div>
 
-                                    <th scope="col" class="relative py-3.5 pl-3">
-                                        <span class="sr-only">Edit</span>
+                                    <th class="relative whitespace-nowrap py-4 pl-3 pr-4  text-sm font-medium sm:pr-6">
+                                        <p class="text-gray-900  mx-12 text-right">Action</p>
                                     </th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($categories as $category)
                                     <tr>
-
                                         <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
                                             {{ $loop->iteration }}
-
                                         </td>
-
                                         <td class="relative py-4 pr-3 text-sm font-medium text-gray-900">
                                             {{ $category->name }}
                                             <div class="absolute bottom-0 right-full h-px w-screen bg-gray-100"></div>
                                             <div class="absolute bottom-0 left-0 h-px w-screen bg-gray-100"></div>
                                         </td>
 
+                                        <td class="relative  py-4 pr-4 text-sm font-medium sm:pr-6 text-right">
+                                            <a href="/category/{{ $category->slug }}"
+                                                class="text-indigo-600 hover:text-indigo-900 px-2">Lihat</a>
 
-                                    </tr>
-                                @endforeach
+                                            <!-- Modal toggle -->
+                                            <button data-modal-target="staticModal{{ $category->id }}"
+                                                data-modal-toggle="staticModal{{ $category->id }}"
+                                                class="text-indigo-600 hover:text-indigo-900 px-2" type="button">
+                                                Edit
+                                            </button>
 
-                            </tbody>
-                        </table>
+                                            <!-- Main modal -->
+                                            <div id="staticModal{{ $category->id }}" data-modal-backdrop="static"
+                                                tabindex="-1" aria-hidden="true"
+                                                class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                <div class="relative w-full max-w-2xl max-h-full">
+                                                    <!-- Modal content -->
+                                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+
+                                                        <!-- Modal header -->
+                                                        <div
+                                                            class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                                            <h3
+                                                                class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                                Edit Kategory</h3>
+                                                            <button type="button"
+                                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                                data-modal-hide="staticModal{{ $category->id }}">
+                                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                    viewBox="0 0 14 14">
+                                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                                        stroke-linejoin="round" stroke-width="2"
+                                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                                </svg>
+                                                                <span class="sr-only">Close modal</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <!-- Modal body -->
+
+                                                        <div class="p-6 space-y-6 text-left font-normal">
+                                                            <form action="/admin/categories/{{ $category->id }}" method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('PUT')
+
+                                                                <label for="name-{{ $category->id }}"
+                                                                    class="block text-sm mb-2">Nama
+                                                                    Kategori:</label>
+                                                                <input type="text" id="name-{{ $category->id }}"
+                                                                    name="name" value="{{ $category->name }}"
+                                                                    class="w-full px-3 py-2 border rounded-md mb-4">
+
+                                                                <label for="description-{{ $category->id }}"
+                                                                    class="block text-sm mb-2">Deskripsi:</label>
+                                                                <input id="description-{{ $category->id }}"
+                                                                    type="hidden" name="description"
+                                                                    value="{{ $category->description }}">
+                                                                <trix-editor class="trix-editor"
+                                                                    input="description-{{ $category->id }}"></trix-editor>
+
+                                                                <label for="image-{{ $category->id }}"
+                                                                    class="block text-sm  mt-3">Pilih
+                                                                    gambar baru (Opsional)</label>
+                                                                @if ($category->image)
+                                                                    <img src="{{ asset('storage/' . $category->image) }}"
+                                                                        alt="Kategori Image" class="max-w-full mb-3 w-1/2"
+                                                                        id="imgPreview-{{ $category->id }}">
+                                                                @endif
+
+                                                                <input type="file" id="image-{{ $category->id }}"
+                                                                    name="image" class="mt-1"
+                                                                    onchange="previewImageEdit(this, 'imgPreview-{{ $category->id }}')">
+
+                                                                <!-- Tempat untuk preview gambar baru -->
+                                                                <img class="max-w-full mb-3 w-1/2 hidden" alt="Preview"
+                                                                    src="" id="imgPreview-{{ $category->id }}">
+
+                                                        </div>
+                                                        <!-- Modal footer -->
+                                                        <div
+                                                            class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                                            <button data-modal-hide="staticModal{{ $category->id }}"
+                                                                type="submit"
+                                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                                Simpan
+                                                            </button>
+                                                            <button data-modal-hide="staticModal{{ $category->id }}"
+                                                                type="button"
+                                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                                                Batal
+                                                            </button>
+                                                        </div>
+
+                                                        </form>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
                     </div>
-                </div>
-            </div>
 
+
+
+                </div>
+
+                <a href="#" class="text-indigo-600 hover:text-indigo-900 px-2">Hapus</a>
+                </td>
+                </tr>
+                @endforeach
+
+
+                </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
+    </div>
+    </div>
+
+
 
 
 
@@ -194,22 +313,72 @@
             height: 16rem;
             object-fit: cover;
         }
+
+        .modal-hidden {
+            display: none;
+        }
+
+
+
+        .modal.open {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
 
 
     <script>
-        // preview image untuk menampilkan gambar yang akan di upload
         function previewImage() {
-            const image = document.querySelector('#image');
-            const imgPreview = document.querySelector('#imgPreview');
+            const file = document.getElementById('image').files[0];
+            const reader = new FileReader();
 
-            imgPreview.style.display = 'block'; // agar gambar bisa muncul ketika di upload 
+            reader.onloadend = function() {
+                document.getElementById('imgPreview').src = reader.result;
+                document.getElementById('imgPreview').classList.remove('hidden');
+            }
 
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(image.files[0]);
-            oFReader.onload = function(oFREvent) {
-                imgPreview.src = oFREvent.target.result;
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById('imgPreview').src = "";
             }
         }
+
+        function previewImageEdit(inputElement, imgElementId) {
+            const file = inputElement.files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                document.getElementById(imgElementId).src = reader.result;
+                document.getElementById(imgElementId).classList.remove('hidden');
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById(imgElementId).src = "";
+            }
+        }
+
+
+
+
+        function closeModal(modalID) {
+            const modal = document.querySelector(`.${modalID}`);
+            modal.classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalButtons = document.querySelectorAll('.openModal');
+
+            modalButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalID = button.getAttribute('data-modal');
+                    const modal = document.querySelector(`.${modalID}`);
+                    modal.classList.remove('hidden');
+                });
+            });
+        });
     </script>
 @endsection
