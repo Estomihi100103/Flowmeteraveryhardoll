@@ -76,7 +76,7 @@
 
                         <div class="space-y-6 border-t border-gray-200 px-4 py-6">
                             <!-- Currency selector -->
-                           
+
                         </div>
                     </div>
 
@@ -94,18 +94,20 @@
 
 
 
-                <div aria-hidden="true" class="absolute inset-0 overflow-hidden" x-data="{ slideIndex: 0, slides: ['https://source.unsplash.com/1200x400?crude oil', 'https://source.unsplash.com/1200x400?nature', 'https://source.unsplash.com/1200x400?city'], timer: null }" x-init="startTimer()">
+                <div aria-hidden="true" class="absolute inset-0 overflow-hidden" x-data="{ slideIndex: 0, slides: ['https://source.unsplash.com/1200x400?crude oil', 'https://source.unsplash.com/1200x400?nature', 'https://source.unsplash.com/1200x400?city'], timer: null }"
+                    x-init="startTimer()">
                     <template x-for="(slide, index) in slides" :key="index">
                         <img :src="slide" x-show.transition.opacity="slideIndex === index" alt=""
                             class="h-full w-full object-cover object-center">
                     </template>
-        
+
                     <!-- Navigation controls -->
                     <div class="absolute inset-y-0 left-0 flex items-center pl-4">
                         <button @click="slideIndex = slideIndex === 0 ? slides.length - 1 : slideIndex - 1"
                             class="relative z-10 rounded-full p-1 bg-white shadow-lg">
                             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7">
                                 </path>
                             </svg>
                         </button>
@@ -114,12 +116,13 @@
                         <button @click="slideIndex = slideIndex === slides.length - 1 ? 0 : slideIndex + 1"
                             class="relative z-10 rounded-full p-1 bg-white shadow-lg">
                             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
                             </svg>
                         </button>
                     </div>
                 </div>
-        
+
                 <!-- Alpine.js code for carousel -->
                 <script>
                     function startTimer() {
@@ -128,7 +131,7 @@
                         }, 3000); // Change slide every 3 seconds
                     }
                 </script>
-        
+
 
 
 
@@ -261,7 +264,8 @@
                 <div
                     class="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-44 lg:px-0">
                     <h1 class="text-4xl font-bold tracking-tight text-white lg:text-6xl">Flowmeteraveryhardoll</h1>
-                    <p class="mt-4 text-xl text-white">Pusat Penjualan Alat Flow Meter,Alat Alat Industri dan Peralatan Keamanan serta Peralatan Profesional
+                    <p class="mt-4 text-xl text-white">Pusat Penjualan Alat Flow Meter,Alat Alat Industri dan Peralatan
+                        Keamanan serta Peralatan Profesional
                     </p>
                     <a href="#"
                         class="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100">Shop
@@ -582,7 +586,142 @@
     </div>
 
 
-      
+
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button class="text-indigo-600 hover:text-indigo-900 openModal" data-category-id="{{ $category->id }}">
+    Edit {{ $category->id }}
+</button>
+
+
+
+
+
+
+
+
+<div id="defaultModal" tabindex="-1" aria-hidden="true"
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Tambah Kategori
+                </h3>
+                <button type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="defaultModal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
+                <form method="post" action="/admin/categories" enctype="multipart/form-data">
+                    @csrf
+                    <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Nama
+                        Kategori</label>
+                    <div class="relative mt-2 mb-4 rounded-md shadow-sm">
+                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        </div>
+                        <input type="text" name="name" id="name"
+                            class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('name') border-red-500 @enderror"
+                            placeholder="Nama Kategori">
+                        <!-- Error message -->
+                        @error('name')
+                            <div class="mt-1 text-red-500 text-sm">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+
+                    <div class="relative mt-2 rounded-md shadow-sm">
+                        <label for="description"
+                            class="block text-sm font-medium leading-6 text-gray-900">Deskripsi</label>
+                        <input id="x" type="hidden" name="description">
+                        <trix-editor class="trix-editor" input="x"></trix-editor>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="block text-sm font-medium text-gray-700 mt-3">Chose
+                            image</label>
+                        <img class="max-w-full mb-3 w-1/2 hidden" alt="Preview" src="" id="imgPreview">
+                        <input type="file" id="image" name="image" class="mt-1"
+                            onchange="previewImage()">
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="flex items-center mt-6 space-x-2  rounded-b dark:border-gray-600">
+                        <button data-modal-hide="defaultModal" type="submit"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan</button>
+                        <button data-modal-hide="defaultModal" type="button"
+                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Batal</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

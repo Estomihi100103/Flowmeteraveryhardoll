@@ -15,8 +15,8 @@ class AdminCategoryController extends Controller
     {
         //ambil seluruh data category dari database berdasarkan yang terbaru
         $categories = category::latest()->get();
-
-        return view('admin.categories.index')->with('categories', $categories);
+        $title = 'Create Category';
+        return view('admin.categories.index', compact('categories', 'title'));
     }
 
 
@@ -38,20 +38,16 @@ class AdminCategoryController extends Controller
         $request->validate([
             'name' => 'required|string|unique:categories,name',
             'description' => 'nullable|string',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Batasi jenis dan ukuran gambar
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048' // Batasi jenis dan ukuran gambar
         ]);
-
         $category = new Category;
         $category->name = $request->name;
         $category->description = $request->description;
-
         if ($request->file('image')) {
             $imagePath = $request->file('image')->store('public/categories-img'); // Simpan gambar ke direktori "public/categories-img"
             $category->image = str_replace('public/', '', $imagePath); // Simpan path tanpa awalan 'public/'
         }
         $category->save();
-
-
         return redirect()->route('admin.categories.index')->with('success', 'Kategori berhasil ditambahkan');
     }
 
@@ -70,7 +66,8 @@ class AdminCategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('admin.categories.index', compact('category'));
+        $title = 'Edit Category';
+        return view('admin.categories.index', compact('category', 'title'));
     }
 
 
@@ -82,6 +79,7 @@ class AdminCategoryController extends Controller
             'description' => 'nullable|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Batasi jenis dan ukuran gambar
         ]);
+
 
         // Update gambar jika ada
         if ($request->hasFile('image')) {
@@ -103,8 +101,20 @@ class AdminCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(category $category)
+
+
+
+    public function destroy(Category $category)
     {
-        //
+        // Hapus gambar jika ada
+        if ($category->image) {
+            Storage::delete('public/' . $category->image);
+        }
+
+        $category->delete();
+
+        return redirect()->route('admin.categories.index')->with('success', 'Kategori berhasil dihapus');
     }
 }
+
+

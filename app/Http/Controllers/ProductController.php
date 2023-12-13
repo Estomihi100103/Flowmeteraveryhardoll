@@ -19,7 +19,8 @@ class ProductController extends Controller
     {
         //return product berdasarkan yang terbaru
         $products = Product::with('categories')->latest()->get();
-        return view('product.products', compact('products'));
+        $title = 'Product';
+        return view('product.products', compact('products','title'));
     }
 
 
@@ -59,10 +60,13 @@ class ProductController extends Controller
             $query->whereIn('category_id', $categoryIds);
         })->get();
 
+        $title = 'Product';
+
         return view('product.show', [
             'product' => $product,
             'categories' => $categories,
-            'isproducts' => $isproducts
+            'isproducts' => $isproducts,
+            'title' => $title
         ]);
     }
 

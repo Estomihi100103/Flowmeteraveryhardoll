@@ -1,20 +1,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div x-show="open" class="relative z-50 lg:hidden"
 x-description="Off-canvas menu for mobile, show/hide based on off-canvas menu state." x-ref="dialog"
 aria-modal="true" style="display: none;">

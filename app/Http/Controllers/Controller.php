@@ -20,18 +20,22 @@ class Controller extends BaseController
 
         //ambil 3 data terbaru dari tabel products
         $products = \App\Models\Product::latest()->take(3)->get();
+        $title = 'Home';
 
         return view('home')->with([
             'categories' => $categories,
             'products' => $products,
+            'title' => $title  
         ]);
     }
 
 
     //contactUs
     public function contactUs()
+    
     {
-        return view('contactUs.index');
+        $title = 'Contact Us';
+        return view('contactUs.index', compact('title'));
     }
 
 
@@ -43,7 +47,9 @@ class Controller extends BaseController
             ->orWhere('deskripsi', 'LIKE', "%$query%")
             ->get();
 
-        return view('product.results-search', compact('products'));
+            $title = 'Search Product';
+
+        return view('product.results-search', compact('products', 'title'));
     }
 
 }

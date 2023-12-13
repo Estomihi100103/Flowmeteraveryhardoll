@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/css/components.css">
     <script src="/js/components.js"></script>
     <script type="module" src="/js/iframe-alpine-964dceff.js"></script>
+    <title>{{ $title }}</title>
+    <link rel="icon" href="/img/Logo.png" type="image/x-icon">
     @vite(['resources/js/app.js'])
     @vite('resources/css/app.css')
     <style>
@@ -66,7 +68,7 @@
 
                         </div>
 
-                    
+
 
                         <div class="space-y-6 border-t border-gray-200 px-4 py-6">
                             <!-- Currency selector -->
@@ -91,8 +93,6 @@
                         <div class="bg-gray-900">
                             <div class="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                                 <!-- Currency selector -->
-
-
                                 <div class="flex items-center space-x-6">
                                     <p class="text-white font-bold text-sm">Distributor Flowmeter Indonesia dan Pusat
                                         Perlengkapan Alat Teknik</p>
@@ -154,18 +154,26 @@
                                 <!-- Logo (lg-) -->
                                 <a href="/" class="lg:hidden">
                                     <span class="sr-only">Your Company</span>
-                                    <img src="img/Logo.png" alt=""
-                                        class="h-8 w-auto">
+                                    <img src="img/Logo.png" alt="" class="h-8 w-auto">
                                 </a>
 
                                 <div class="flex flex-1 items-center justify-end">
 
-                                    <div class="relative" x-data="{ open: false }">
+                                    <div class="flex" x-data="{ open: false }">
                                         <!-- Search Icon -->
                                         <button @click="open = true"
                                             class="p-2 rounded-md bg-none hover:bg-none focus:outline-none focus:bg-none text-white">
                                             Search
                                         </button>
+
+                                        {{-- jika sudah login --}}
+                                        @auth
+                                            @if (Auth::user()->role == 'admin')
+                                                <a href="/admin/dashboard">
+                                                    <h1 class="p-2 text-white">Login</h1>
+                                                </a>
+                                            @endif
+                                        @endauth
 
                                         <!-- Modal -->
                                         <div x-show="open" @click="open = false"
@@ -192,7 +200,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>  
+                                    </div>
                                 </div>
                             </div>
                         </div>

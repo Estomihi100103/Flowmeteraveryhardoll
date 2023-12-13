@@ -4,9 +4,11 @@
     <div class="lg:self-end">
         <h2 class="text-2xl font-bold tracking-tight text-gray-900 mb-5">Pelanggan Juga Membeli</h2>
         <div class="relative mt-2 rounded-md shadow-sm">
-          
-                <input type="text" name="" id="search" class="block w-full rounded-full border-0 px-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Search category">
-         
+
+            <input type="text" name="" id="search"
+                class="block w-full rounded-full border-0 px-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Search category">
+
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
@@ -51,9 +53,15 @@
 
                         <div
                             class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                            <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                                alt="Front of men's Basic Tee in black."
-                                class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            @if ($isproduct->img)
+                                <img src="{{ asset('storage/' . $isproduct->img) }}" alt="Gambar Produk"
+                                    class="card-img h-full w-full object-cover object-center">
+                            @else
+                                <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
+                                    alt="Front of men's Basic Tee in black."
+                                    class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            @endif
+
                         </div>
                         <div class="mt-4 flex justify-between">
                             <h3 class="text-lg text-gray-700 font-bold">

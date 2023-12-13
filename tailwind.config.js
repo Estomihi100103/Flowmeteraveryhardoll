@@ -13,7 +13,10 @@ module.exports = {
     }
   },
   plugins: [
-    require('flowbite')
+    require('flowbite'),
+    require('flowbite/plugin')({
+      charts: true,
+  }),
   ],
 }
 

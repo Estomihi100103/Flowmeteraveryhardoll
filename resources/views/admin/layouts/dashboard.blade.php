@@ -9,9 +9,10 @@
     <script type="module" src="/js/iframe-alpine-964dceff.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/trix/dist/trix.min.css">
     <script src="https://cdn.jsdelivr.net/npm/trix/dist/trix.min.js"></script>
-    
+    <script src="/js/myjs.js"></script>
+    <title>{{ $title }}</title>
+    <link rel="icon" href="/img/Logo.png" type="image/x-icon">
 
-    <title>Document</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

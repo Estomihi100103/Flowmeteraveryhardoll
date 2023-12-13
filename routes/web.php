@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\CreateCategory;
+use App\Http\Controllers\AdminLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,14 @@ Route::get('/contact', [\App\Http\Controllers\Controller::class, 'contactUs'])->
 
 
 
+
 //admin
-Route::resource('admin/dashboard', \App\Http\Controllers\AdminDashboardController::class);
-Route::resource('admin/categories', \App\Http\Controllers\AdminCategoryController::class)->name('index', 'admin.categories.index');
-Route::resource('admin/products', \App\Http\Controllers\AdminProductController::class)->name('index', 'admin.products.index');
+Route::middleware(['auth', 'cekstatus'])->group(function () {
+    Route::resource('admin/dashboard', \App\Http\Controllers\AdminDashboardController::class)->names('admin.dashboard');
+    Route::resource('admin/categories', \App\Http\Controllers\AdminCategoryController::class)->name('index', 'admin.categories.index');
+    Route::resource('admin/products', \App\Http\Controllers\AdminProductController::class)->names('admin.products');
+});
+
+Route::get('admin/login', [AdminLoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('admin/login', [AdminLoginController::class, 'login'])->name('login');
+Route::post('admin/logout', [AdminLoginController::class, 'logout'])->name('logout');

@@ -57,9 +57,15 @@
                 <!-- Product image -->
                 <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
                     <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
-                        <img src="https://tailwindui.com/img/ecommerce-images/product-page-04-featured-product-shot.jpg"
-                            alt="Model wearing light green backpack with black canvas straps and front zipper pouch."
-                            class="h-full w-full object-cover object-center">
+                        @if ($product->img)
+                            <img src="{{ asset('storage/' . $product->img) }}" alt="Gambar Produk"
+                                class="card-img h-full w-full object-cover object-center">
+                        @else
+                            <img src="https://tailwindui.com/img/ecommerce-images/product-page-04-featured-product-shot.jpg"
+                                alt="Model wearing light green backpack with black canvas straps and front zipper pouch."
+                                class="h-full w-full object-cover object-center">
+                        @endif
+
                     </div>
                 </div>
 

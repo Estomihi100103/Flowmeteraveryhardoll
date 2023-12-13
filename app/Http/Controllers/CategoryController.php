@@ -14,9 +14,9 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = category::all();
-      
+        $title = 'Category';
 
-        return view('categories.index', compact('categories'));
+        return view('categories.index', compact('categories','title'));
     }
 
     /**
@@ -44,7 +44,8 @@ class CategoryController extends Controller
         $categories = category::all();
         //ambil product yang memiliki category_id = $category->id
         $isproducts = $category->products;
-        return view('categories.show', compact('category', 'isproducts', 'categories'));
+        $title = 'Category';
+        return view('categories.show', compact('category', 'isproducts', 'categories','title'));
     }
 
     /**
